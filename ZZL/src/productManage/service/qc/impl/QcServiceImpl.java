@@ -242,6 +242,7 @@ public class QcServiceImpl implements QcService{
 		String purchaseCode =  "CGD"+fmt.format(nowDate);
 		purchase.setPurchaseCode(purchaseCode); 
 		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+		purchase.setScheduledPurchaseDate(currentDate);
 		purchase.setPurDocumentedDate(currentDate);
 		purchase.setPurchaseState("待审核");
 		purchase.setPurchaseType("shell");
