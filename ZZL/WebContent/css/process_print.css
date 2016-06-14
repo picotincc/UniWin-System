@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+.print-header{
+	font-weight: bolder;
+	font-size: 30px;
+}
+
+.detail-th{
+	background-color:#C8E3FF ;
+}
+
+th{
+	text-align:center
+}
+
+td{
+	text-align:center
+}
+
+.commdity-graph{
+	width: 150px; 
+	height: 200px;
+}

@@ -1,0 +1,20 @@
+.content{_height: 1000px;min-height:1000px;padding: 30px 25px;}
+.input-group,.form-group{position: relative;float: left;width: 15%;}
+.form-control{float: left;width: 100%;}
+label {color: #555555;font-size: 12px; margin-left: 10px;}
+#search-pro{position: relative;float: left;width: 8%;height:34px;margin-left: 15px;margin-top: 22px;}
+.table-responsive{margin-top: 10px;}
+.table{border-top: 3px solid #7D9EC0;table-layout: fixed;}
+th{font-size: 12px;color: #4F4F4F;text-align: center;}
+td{text-align: center;font-size:14px;word-wrap:break-word;}
+.c8{width:5%;}
+tr{background-color:transparent;}
+.commdity-graph{width: 60px;height: 80px;}
+.purchase-graph{width:30px;height:30px;}
+.tc5{width:15%; text-align:left;}
+.item-name{color:#0000ff;}
+.form-input{padding: 2px 10px;}
+
+.green{color: #01ff70;}
+.red{color: #f00000;}
+.yellow{color: #eea236;}

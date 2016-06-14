@@ -1,0 +1,16 @@
+a,label{color: #737373;}
+a:hover{color: #737373;}
+.content{_height: 1000px;min-height:1000px;padding: 30px 25px;}
+.sampleOrderDetail,.inquiryDetail,.orderDetail{width: 100%;_height: 500px;min-height:500px;padding: 30px 25px;border:1px dashed #4D4D4D;}
+.png_area{position:relative;float:left;width: 15%;height: 250px;}
+#design_image{width: 100%;height: 80%;margin-top: 10px;}
+.sampleOrderInfo,.inquiryInfo,.orderInquiryInfo{position:relative;float: left;width: 40%;height: 250px;padding: 5px 30px;}
+.sampleOrderTime,.inquiryProgress{position: relative;float: left;width: 45%;height: 250px;margin: 0px;padding: 5px 5px;list-style-type: none;}
+#tinySiteIcon{width:10px;height: 10px;}
+#lineIcon{width: 2px;height: 20px;margin-left: 4px;}
+#infoTable tbody tr td {border-top:none;}
+#printInfo,#returnPrevPage{position: relative;float: right;margin-left: 20px;}
+.inquiryProgress{height: 270px;}
+.orderInquiryInfo{width: 85%;}
+.order-charge,.order-customer{position: relative;float: left;width: 50%;_height:150px;min-height: 150px;}
+.my_label{color: #555555;font-size: 12px;}
