@@ -77,7 +77,6 @@ public class PurchaseServiceImpl implements PurchaseService {
     	}
     	
     	pagebean.setList(purchaseVOs);
-    	//pagebean.setAllList(qcVOs);
         return pagebean;
 	}
 	
