@@ -1,0 +1,14 @@
+.head{font-weight: bolder;font-size: 30px;}
+.t1c1{width: 10%;}
+.t1c2{min-width:15%;}
+.t2c1{width:20%;}
+.t2r1{background-color:#C8E3FF ;}
+.t3c2{width:4%;}
+.t3c7{width:4%;}
+.t3c9{width:5px;max-width:4%}
+.table{vertical-align: middle; table-layout: fixed;text-align: center;}
+
+th{text-align: center;vertical-align: middle; font-size: 14px;}
+td{ font-size: 14px;vertical-align: middle;text-align: center; word-wrap:break-word;}
+p{line-height: 1;}
+.commdity-graph{width: 150px; height: 200px;}

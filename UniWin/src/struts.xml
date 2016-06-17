@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+
+
+
+	<package name="process" namespace="/Process" extends="struts-default,json-default">		
+		<action name="processorlist" class="ProcessorAction" method="showAllProcessorList">
+			<result name="success">/pages/process/processor_manage.jsp</result>
+		</action>
+		<action name="queryProcessor" class="ProcessorAction" method="queryProcessor">
+			<result name="success">/pages/process/processor_manage.jsp</result>
+		</action>
+		<action name="addProcessor" class="ProcessorAction" method="addProcessor">
+			<result name="success" type="redirect">/Process/processorlist</result>
+		</action>
+		<action name="addOutSource" class="OutSourceAction" method="addOutSource">
+			<result name="success">/pages/process/outsource_new.jsp</result>
+		</action>
+		<action name="outsourcelist" class="OutSourceAction" method="showAllOutSourceList">
+			<result name="success">/pages/process/outsource_manage.jsp</result>
+			<result name="error">/pages/process/outsource_modify.jsp</result>
+		</action>
+		<action name="queryOutSource" class="OutSourceAction" method="queryOutSource">
+			<result name="success">/pages/process/outsource_manage.jsp</result>
+			<result name="error">/pages/process/outsource_modify.jsp</result>
+		</action>
+		<action name="changeState" class="OutSourceAction" method="changeState">
+			<result name="success" type="redirect">/Process/outsourcelist</result>
+		</action>
+		<action name="cancelOutSource" class="OutSourceAction" method="cancelOutSource">
+			<result name="success" type="redirect">/Process/outsourcelist</result>
+		</action>
+		<action name="getOutSource" class="OutSourceAction" method="getOutSource">
+			<result name="success">/pages/process/outsource_modify.jsp</result>
+		</action>
+		<action name="printOutSource" class="OutSourceAction" method="getOutSource">
+			<result name="success">/pages/process/outsource_print.jsp</result>
+		</action>
+		<action name="modifyOutSource" class="OutSourceAction" method="modifyOutSource">
+			<result name="success" type="redirect">/Process/outsourcelist</result>
+		</action>
+		<action name="addReceive" class="ReceiveAction" method="addReceive">
+			<result name="success" type="redirect">/Process/processorlist</result>
+		</action>
+		<action name="receivelist" class="ReceiveAction" method="showAllReceiveList">
+			<result name="success">/pages/process/receive_manage.jsp</result>
+		</action>
+		<action name="queryReceive" class="ReceiveAction" method="queryReceive">
+			<result name="success">/pages/process/receive_manage.jsp</result>
+		</action>
+		<action name="cancelReceive" class="ReceiveAction" method="cancelReceive">
+			<result name="success" type="redirect">/Process/receivelist</result>
+		</action>
+		<action name="getReceive" class="ReceiveAction" method="getReceive">
+			<result name="success">/pages/process/receive_modify.jsp</result>
+		</action>
+		<action name="modifyReceive" class="ReceiveAction" method="modifyReceive">
+			<result name="success" type="redirect">/Process/receivelist</result>
+		</action>
+		<action name="printReceive" class="ReceiveAction" method="getReceive">
+			<result name="success">/pages/process/receive_print.jsp</result>
+		</action>
+		<action name="getReceiveDetails" class="ReceiveAction" method="getReceiveDetails">
+          	<result name="success" type="json">
+          		<param name="root">detailMsg</param>
+          	</result>
+       	</action>
+	</package>
+	<package name="technique" namespace="/Technique" extends="struts-default">
+	    <action name="initAddTechnique" class="AddTechniqueAction" method="initAddTechnique">
+		    <result name="success">/pages/technique/addTechnique.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+		
+		<action name="addTechnique" class="AddTechniqueAction">
+		    <result name="success">/pages/technique/addTechnique.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+		
+		<action name="showAllDesigns" class="ManageDesignAction" method="showAllDesigns">
+		    <result name="success">/pages/technique/manageTechnique.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+		<action name="showSearchedDesigns" class="ManageDesignAction">
+		    <result name="success">/pages/technique/manageTechnique.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+	</package>
+    <package name="warehouse" namespace="/Warehouse" extends = "struts-default">
+        <action name = "materialOut_*" class="MaterialOutAction" method = "{1}">
+            <result name="showAllStores">/pages/warehouse/materialOut/showAllStores.jsp</result>
+            <result name="showMaterialOutputs">/pages/warehouse/materialOut/materialOutManage.jsp</result>
+            <result name="failed">/index.jsp</result>
+            <result name="error">/pages/warehouse/public/error.jsp</result>
+        </action>
+        <action name="materialIn" class="MaterialInAction" method="showAllMaterials">
+        	<result name="success">/pages/warehouse/materialIn/materialInput.jsp</result>
+        	<result name="failed">/index.jsp</result>
+        </action>        
+        <action name="searchMaterial" class="MaterialInAction" method="searchMaterial">
+        	<result name="success">/pages/warehouse/materialIn/materialInput.jsp</result>
+        	<result name="failed">/index.jsp</result>
+        </action>
+        <action name="addInMaterial" class="MaterialInAction" method="addInMaterial">
+        	<result name="success">/pages/warehouse/materialIn/materialInput.jsp</result>
+        	<result name="failed">/index.jsp</result>
+        </action>
+        <action name="materialInManage" class="MaterialInAction" method="materialInManage">
+        	<result name="success">/pages/warehouse/materialIn/materialInManage.jsp</result>
+        	<result name="failed">/index.jsp</result>
+        </action>
+        <action name="materialInDetail" class="MaterialInAction" method="materialIndDetail">
+        	<result name="success">/pages/warehouse/materialIn/materialInManage.jsp</result>
+        	<result name="failed">/index.jsp</result>
+        </action>
+        
+        
+    </package>
+	<package name="kezaishou" namespace="/Production" extends="struts-default">
+		<action name="tailor" class="TailorAction" method="queryPage">
+			<result name="success">/pages/production/tailor.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="spectailor" class="TailorAction" method="queryPageWithParams">
+			<result name="success">/pages/production/tailor.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="detailtailor" class="TailorAction" method="queryTailor">
+			<result name="success">/pages/production/detailTailor.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="modifytailor" class="TailorAction" method="modifyTailor">
+			<result name="success">/pages/production/detailTailor.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="productions" class="ProductionAction" method="queryPage">
+			<result name="success">/pages/production/productionlist.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="specproductions" class="ProductionAction" method="queryPageWithParams">
+			<result name="success">/pages/production/productionlist.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="production" class="ProductionAction" method="queryProduction">
+			<result name="success">/pages/production/production.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="modproduction" class="ProductionAction" method="modifyPriority">
+			<result name="success">/pages/production/production.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="abparams" class="ProductionAction" method="queryAbnormal">
+			<result name="success">/pages/production/abnormal.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="printproduction" class="ProductionAction" method="printProduction">
+			<result name="success">/pages/production/printproduction.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+	</package>
+	<package name="Orders" namespace="/Orders" extends="struts-default,json-default">
+		<action name="orders" class="OrderAction" method="getAllOrdersByPage">
+			<result name="success">/pages/Orders/OrdersList.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="search_orders" class="OrderAction" method="searchOrdersByPage">
+			<result name="success">/pages/Orders/OrdersList.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="order" class="OrderAction" method="getOrderByID">
+			<result name="success">/pages/Orders/order.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="OrderAjax_*" class="OrderAction" method="{1}">
+			 <result name="success" type="json"></result>
+		</action>
+	</package>
+	<package name="design_order" namespace="/Design_Order" extends="struts-default,json-default">		
+		<action name="showDesignList" class="DesignOrderAction" method="showDesignList">
+			<result name="success">/pages/design_order/showDesignList.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/design_order/error.jsp</result>
+		</action>
+	    <action name="newOrder" class="DesignOrderAction" method="newOrder">
+			<result name="success">/pages/design_order/newOrder.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/design_order/error.jsp</result>
+		</action>
+		<action name="addOrder" class="DesignOrderAction" method="addOrder">
+			<result name="success">/pages/design_order/showDesignList.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/design_order/error.jsp</result>
+		</action>
+		
+	</package>
+	<package name="qc" namespace="/Qc" extends="struts-default,json-default">		
+		<action name="qclist" class="QCListAction" method="showQcList">
+			<result name="success">/pages/qc/QCList.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="search_qclist" class="QCListAction" method="showSearchedQcList">
+			<result name="success">/pages/qc/QCList.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="qcdetail" class="QCDetailAction" method="getQcDetail">
+			<result name="success">/pages/qc/QCDetail.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="addResult" class="QCDetailAction" method="addResult">
+			<result name="success">/pages/qc/QCDetail.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="setCharge_qclist" class="QCListAction" method="setCharge">
+			<result name="success" type="json">/pages/qc/QCList.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="newQc" class="NewQCAction" method="newQc">
+			<result name="success">/pages/qc/NewQC.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		
+		<action name="getAllDesignByPageAjax" class="NewQCAction" method="getAllDesignByPageAjax">
+			<result type="json">
+	            <param name="root">designJson</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	        <result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="newQcByDesign" class="NewQCAction" method="newQcByDesign">
+			<result name="success" >/pages/qc/NewQC.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="deleteQC" class="QCListAction" method="deleteQC">
+			<result name="success" >/pages/qc/QCList.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="addQC" class="NewQCAction" method="addQC">
+			<result name="success" >/pages/qc/NewQC.jsp</result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/pages/qc/error.jsp</result>
+		</action>
+		<action name="getAllChargeByPageAjax" class="QCListAction" method="getAllChargeByPageAjax">
+			
+			 <result type="json">
+	            <param name="root">userJson</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	        <result name="error">/pages/qc/error.jsp</result>
+		</action>
+	</package>
+   <package name="listManage" namespace="/listManage" extends="struts-default,json-default">		
+		<action name="outSourceManage" class="OutSourceManageAction" method="showAllOutSources">
+			<result name="showAllOutSources">/pages/ListManage/outSourceManage.jsp</result>
+			 <result name="failed">/index.jsp</result>
+		</action>
+		<action name="showOutSourceDetail" class="OutSourceManageAction" method="getOutSourceByID">
+			<result name="showOutSourceDetail">/pages/ListManage/outSourceDetail.jsp</result>
+			 <result name="failed">/index.jsp</result>
+		</action>
+		<action name="InquireOutSource" class="OutSourceManageAction" method="inquireOutSources">
+			<result name="success">/pages/ListManage/outSourceManage.jsp</result>
+			 <result name="failed">/index.jsp</result>
+		</action>
+		<action name="showAllTechniqueOutSource" class="TechniqueManageAction" method="showAllOutSources">
+		    <result name="success">/pages/ListManage/TechniqueList.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action  name="changeTechniqueState" class="TechniqueManageAction" method="changeTechniqueState">
+		    <result name="success">/pages/ListManage/TechniqueList.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action  name="InquireTechniquePhase" class="TechniqueManageAction" method="InquireOutSourceInTechnique">
+		    <result name="success">/pages/ListManage/TechniqueList.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="showAllTailorOutSource" class="TailorManageAction" method="showAllSourcesInTailor">
+		    <result name="success">/pages/ListManage/TailorPhaseList.jsp</result>
+		     <result name="failed">/index.jsp</result> 
+		</action>
+		<action name="InquireTaiorPhase" class="TailorManageAction" method="inquireSourcesInTailor">
+		    <result name="success">/pages/ListManage/TailorPhaseList.jsp</result> 
+		     <result name="failed">/index.jsp</result>
+		</action>
+				<action  name="changeTailorState" class="TailorManageAction" method="changeTailorState">
+		    <result name="success">/pages/ListManage/TailorPhaseList.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="tailorAppoint" class="TailorManageAction" method="tailorAppoint">
+		 <result name="success">/pages/ListManage/TailorPhaseList.jsp</result> 
+		  <result name="failed">/index.jsp</result>
+		</action>
+		<action name="StartOutSourceManage" class="StartManageAction" method="showAllOutSources">
+		    <result name="success">/pages/ListManage/outsourceManage_new.jsp</result> 
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="changeState" class="StartManageAction" method="changeProductionState">
+		    <result name="success">/pages/ListManage/outsourceManage_new.jsp</result> 
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="InquireOutSourceUnsolved" class="StartManageAction" method="inquire">
+		    <result name="success">/pages/ListManage/outsourceManage_new.jsp</result>
+		     <result name="failed">/index.jsp</result> 
+		</action>
+		<action name="ShowUser" class="TailorManageAction" method="getAllChargeByPageAjax">
+			 <result type="json">
+	            <param name="root">userJson</param>
+	        </result>
+	         <result name="failed">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="customer" namespace="/Customer" extends="struts-default">
+		<action name="customerlist" class="CustomerAction" method="CustomerManage">
+			<result name="success">/pages/customer/customer.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="failed">/index.jsp</result>
+		</action>
+		<action name="showSearchedCustomers" class="CustomerAction">
+		    <result name="success">/pages/customer/customer.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+		<action name="examineCustomer" class="CustomerAction" method="examine">
+		     <result name="success">/pages/customer/customer.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="deleteCustomer" class="CustomerAction" method="delete">
+		     <result name="success">/pages/customer/customer.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="conditionSheets" namespace="/ConditionSheets" extends="struts-default,json-default">
+	    <action name="techniqueConditionSheet" class="TechniqueConditionAction" method="techniqueCondition">
+		     <result name="success">/pages/conditionSheets/techniqueCondition.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="searchedTechniqueConditionSheet" class="TechniqueConditionAction">
+		     <result name="success">/pages/conditionSheets/techniqueCondition.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="modelConditionSheet" class="ModelConditionAction" method="modelCondition">
+		     <result name="success">/pages/conditionSheets/modelCondition.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="searchedModelConditionSheet" class="ModelConditionAction">
+		     <result name="success">/pages/conditionSheets/modelCondition.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="phaseConditionSheet" class="PhaseConditionAction" method="phaseCondition">
+		     <result name="success">/pages/conditionSheets/phaseCondition.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>
+		<action name="searchedPhaseConditionSheet" class="PhaseConditionAction">
+		     <result name="success">/pages/conditionSheets/phaseCondition.jsp</result>
+		     <result name="failed">/index.jsp</result>
+		</action>   
+		<action name="techniqueConditionAjax" class="TechniqueConditionAction">
+	        <result type="json">
+	            <param name="root">techniqueConditionAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	    <action name="modelConditionAjax" class="ModelConditionAction">
+	        <result type="json">
+	            <param name="root">modelConditionAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	    <action name="phaseConditionAjax" class="PhaseConditionAction">
+	        <result type="json">
+	            <param name="root">phaseConditionAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	     
+	     <action name="modelConditionAjax" class="ModelConditionAction">
+	        <result type="json">
+	            <param name="root">modelConditionAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	    <action name="phaseConditionAjax" class="PhaseConditionAction">
+	        <result type="json">
+	            <param name="root">phaseConditionAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	     
+	</package>
+	
+	<package name="sample" namespace="/Sample" extends="struts-default">
+		<action name="addSample" class="SampleAction" method="addSample">
+			<result name="success">/pages/sample/addSample.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		
+		<action name="addInSample" class="SampleAction" method="addInSample">
+			<result name="success">/pages/sample/addSample.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		
+		<action name="showAllSamples" class="SampleAction" method="showAllSamples">
+		    <result name="success">/pages/sample/sampleManage.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+		<action name="searchSamples" class="SampleAction" method="showSamplesByFilter">
+		    <result name="success">/pages/sample/sampleManage.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+		<action name="importSample" class="SampleAction" method="importSample">
+		    <result name="success">/pages/sample/sampleManage.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+		<action name="exportSample" class="SampleAction" method="exportExcel">
+		    <result name="failed">/index.jsp</result>
+		</action>
+		
+	</package>
+
+	<package name="system" namespace="/System" extends="struts-default,json-default">
+		<action name="userLogin" class="LoginAction" method="login">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="userLogOut" class="LoginAction" method="logout">
+			<result name="success">/index.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="manageDepartment" class="ShowDepartmentAction" method="show">
+			<result name="success">/pages/system/department_manage.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="addDepartment" class="ShowDepartmentAction" method="add">
+			<result name="success" type="redirect">/System/manageDepartment</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="chooseDepartment" class="ShowDepartmentAction" method="choose">
+			<result name="success">/pages/system/modifyDepartment.jsp</result>
+			<result name="error" type="redirect">/System/manageDepartment</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="updateDepartment" class="ShowDepartmentAction" method="update">
+			<result name="success" type="redirect">/System/manageDepartment</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="manageAbnormalParameter" class="ShowAbnormalParameterAction" method="show">
+			<result name="success">/pages/system/manageAbnormalParameter.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="addAbnormalParameter" class="ShowAbnormalParameterAction" method="add">
+			<result name="success" type="redirect">/System/manageAbnormalParameter</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="chooseAbnormalParameter" class="ShowAbnormalParameterAction" method="choose">
+			<result name="success">/pages/system/updateAbnormalParameter.jsp</result>
+			<result name="error" type="redirect">/System/manageAbnormalParameter</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="updateAbnormalParameter" class="ShowAbnormalParameterAction" method="update">
+			<result name="success" type="redirect">/System/manageAbnormalParameter</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="manageUser" class="ShowUserAction" method="show">
+			<result name="success">/pages/system/manageUser.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="UserAjax_*" class="ShowUserAction" method="{1}">
+			 <result type="json">
+	            <param name="root">userJson</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+		</action>
+		
+		<action name="addUser" class="ShowUserAction" method="add">
+			<result name="success" type="redirect">/System/manageUser</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="searchUser" class="ShowUserAction" method="search">  
+            <result name="success">/pages/system/manageUser.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+		<action name="chooseUser" class="ShowUserAction" method="choose">
+			<result name="success">/pages/system/updateUser.jsp</result>
+			<result name="error">/pages/system/manageUser.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="updateUser" class="ShowUserAction" method="update">
+			<result name="success" type="redirect">/System/manageUser</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="deleteUser" class="ShowUserAction" method="delete">
+			<result name="success" type="redirect">/System/manageUser</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="getModuleTree" class="GetModuleAction" method="getModuleTree">  
+            <result type="json">
+                <param name="root">data</param>  
+            </result>  
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="getModuleDetail" class="GetModuleAction" method="getModuleDetail">  
+            <result type="json">
+                <param name="root">detail</param>  
+            </result>  
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="updateModule" class="GetModuleAction" method="update">
+            <result type="json">
+                <param name="root">data</param>  
+            </result>
+            <result name="failed">/index.jsp</result>
+		</action>
+        <action name="getAuthorityTree" class="GetAuthorityAction" method="getAuthorityTree">  
+            <result type="json">
+                <param name="root">authoList</param>  
+            </result>  
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="getRoleAuthorityTree" class="GetAuthorityAction" method="getRoleAuthorityTree">  
+            <result type="json">
+                <param name="root">roleAuthoList</param>  
+            </result>  
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="saveRoleAuthority" class="GetAuthorityAction" method="saveRoleAuthority">  
+            <result name="success" type="json"></result>  
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="updateAuthorityState" class="GetAuthorityAction" method="updateAuthorityState">  
+            <result name="success" type="json"></result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="manageUserRole" class="ShowUserRoleAction" method="showUserRole">  
+            <result name="success">/pages/system/manageUserRole.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>  
+        <action name="searchUserInRole" class="ShowUserRoleAction" method="search">
+			<result name="success">/pages/system/manageUserRole.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+        <action name="showRoleOfUser" class="ShowUserRoleAction" method="showRoleOfUser">  
+            <result name="success" type="redirect">/System/manageUserRole</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="saveRoleOfUser" class="ShowUserRoleAction" method="saveRoleOfUser">  
+            <result name="success">/pages/system/manageUserRole.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="manageRoleAuthority" class="ManageRoleAuthorityAction" method="showRole">  
+            <result name="success">/pages/system/manageRoleAuthority.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>  
+        <action name="addRole" class="AddRoleAction" method="add">  
+            <result name="success" type="redirect">/System/manageRoleAuthority</result>
+            <result name="failed">/index.jsp</result>
+        </action>  
+        <action name="updateRole" class="UpdateRoleAction" method="update">  
+            <result name="success" type="redirect">/System/manageRoleAuthority</result>
+            <result name="failed">/index.jsp</result>
+        </action>  
+	</package>
+	<package name="purchase" namespace="/Purchase" extends="struts-default">
+		<action name="purchaseList" class="PurchaseListAction" method="showPurchaseList">
+			<result name="success">/pages/purchase/PurchaseList.jsp</result>
+		</action>
+		<action name="purchaseDetail" class="PurchaseListAction" method="purchaseDetail">
+			<result name="success">/pages/purchase/PurchaseDetail.jsp</result>
+		</action>
+		<action name="accessoryPurchaseList" class="PurchaseListAction" method="showAccessoryPurchaseList">
+			<result name="success">/pages/purchase/AccessoryPurchaseList.jsp</result>
+		</action>
+		<action name="changeState" class="PurchaseListAction" method="changeState">
+			<result name="success">/pages/purchase/PurchaseList.jsp</result>
+		</action>
+		<action name="changeAccessoryState" class="PurchaseListAction" method="changeAccessoryState">
+			<result name="success">/pages/purchase/AccessoryPurchaseList.jsp</result>
+		</action>
+		<action name="cancelPurchase" class="PurchaseListAction" method="cancelPurchase">
+			<result name="success">/pages/purchase/PurchaseList.jsp</result>
+		</action>
+		<action name="searchPurchaseList" class="PurchaseListAction" method="searchPurchaseList">
+			<result name="success">/pages/purchase/PurchaseList.jsp</result>
+		</action>
+		<action name="searchAccessoryPurchaseList" class="PurchaseListAction" method="searchAccessoryPurchaseList">
+			<result name="success">/pages/purchase/AccessoryPurchaseList.jsp</result>
+		</action>
+	</package>
+	<package name="material" namespace="/Material" extends="struts-default,json-default">
+		<action name="showAddMaterial" class="MaterialAction" method="showAddMaterial">
+			<result name="success">/pages/material/material_add.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="addMaterial" class="MaterialAction" method="addMaterial">
+			<result name="success" type="redirect">/Material/showAddMaterial</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showMaterialList" class="MaterialAction" method="showMaterialList">
+			<result name="success">/pages/material/material_manage.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="getMaterial" class="MaterialAction" method="getMaterial">
+			<result name="success">/pages/material/material_update.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="updateMaterial" class="MaterialAction" method="updateMaterial">
+			<result name="success" type="redirect">/Material/showMaterialList</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showApplyList" class="MaterialAction" method="showApplyList">
+			<result name="success">/pages/material/material_apply.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showMaterialDetail" class="MaterialAction" method="showMaterialDetail">
+			<result name="success" type="json">
+				<param name="root">materialDetialAjax</param>
+			</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="getVendorList" class="MaterialAction" method="getVendorList">
+			<result name="success" type="json">
+				<param name="root">vendorlistAjax</param>
+			</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="getWarehouseList" class="MaterialAction" method="getWarehouseList">
+			<result name="success" type="json">
+				<param name="root">warehouselistAjax</param>
+			</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="vendor" namespace="/Vendor" extends="struts-default,json-default">
+		<action name="showVendorList" class="VendorAction" method="showVendorList">
+			<result name="success">/pages/vendor/vendor_manage.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="addVendor" class="VendorAction" method="addVendor">
+			<result name="success" type="redirect">/Process/processorlist</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="updateVendor" class="VendorAction" method="updateVendor">
+			<result name="success" type="redirect">/Vendor/showVendorList</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="getVendorById" class="VendorAction" method="getVendorById">
+			<result name="success" type="json">
+				<param name="root">vendorDetialAjax</param>
+			</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="bom" namespace="/Bom" extends="struts-default,json-default">
+		<action name="showDesignList" class="BomAction" method="showDesignList">
+			<result name="success">/pages/bom/bom_manage.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="getBom" class="BomAction" method="getBom">
+			<result name="success">/pages/bom/bom_update.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showAddDesign" class="BomAction" method="showAddDesign">
+			<result name="success">/pages/bom/bom_add.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="addDesign" class="BomAction" method="addDesign">
+			<result name="success" type="redirect">/Bom/showAddDesign</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="quitDesign" class="BomAction" method="quitDesign">
+			<result name="success" type="redirect">/Bom/showDesignList</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="getMaterialList" class="BomAction" method="getMaterialList">
+			<result name="success" type="json">
+				<param name="root">materialListAjax</param>
+			</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="addBom" class="BomAction" method="addBom">
+			<result name="success" type="redirect">Bom/showDesignList</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="deleteBom" class="BomAction" method="deleteBom">
+			<result name="success" type="redirect">Bom/showDesignList</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showUpload" class="BomAction" method="showUpload">
+			<result name="success">/pages/bom/upload.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="upload" class="BomAction" method="upload">
+			<result name="success" type="redirect">/Bom/showUpload</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="supplement" namespace="/Supplement" extends="struts-default,json-default">
+		<action name="supplementlist" class="ShowSupplementAction" method="showAll">
+			<result name="success">/pages/supplement/supplement_manage.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showSearchedSupplements" class="ShowSupplementAction" method="showByMoreDetails">
+		    <result name="success">/pages/supplement/supplement_manage.jsp</result>
+		    <result name="failed">/index.jsp</result>
+		</action>
+		<action name="addSupplement" class="AddSupplementAction" method="createSupplement">
+			<result name="success" type="json">
+          		<param name="root">addMsg</param>
+          	</result>
+          	<result name="failed">/index.jsp</result>
+		</action>
+		<action name="addAuxiliarySupplement" class="AddSupplementAction" method="createAuxiliarySupplement">
+			<result name="success">/pages/supplement/auxiliarySupplement_create.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="changeState" class="ManageSupplementAction" method="changeState">
+			<result name= "success">/pages/supplement/supplement_manage.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="supplementDetail" class="ShowSupplementAction" method="showSupplementDetail">
+			<result name= "success">/pages/supplement/supplementDetail.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showLiningSupplementMaterial" class="AddSupplementAction" method="showLiningSupplementMaterial">
+			<result name="success" type="json">
+          		<param name="root">detailMsg</param>
+          	</result>
+          	<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showAuxSupplementMaterial" class="AddSupplementAction" method="showAuxSupplementMaterial">
+			<result name="success" type="json">
+          		<param name="root">detailMsg</param>
+          	</result>
+          	<result name="failed">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="SampleOrders" namespace="/SampleOrders" extends="struts-default">
+		<action name="sampleOrder" class="SampleOrderAction" method="getSampleOrderByID">
+			<result name="success">/pages/SampleOrders/sampleOrder.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="sampleOrderPrinter" class="SampleOrderAction" method="getSampleOrderByID">
+			<result name="success">/pages/SampleOrders/sampleOrderPrinter.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="sampleOrders" class="SampleOrderAction" method="getAllSampleOrdersByPage">
+			<result name="success">/pages/SampleOrders/sampleOrdersList.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="search_sampleOrders" class="SampleOrderAction" method="searchSampleOrdersByPage">
+			<result name="success">/pages/SampleOrders/sampleOrdersList.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+	</package>
+	<package name="Inquiry" namespace="/Inquiries" extends="struts-default">
+		<action name="inquiry" class="InquiryAction" method="getInquiryByID">
+			<result name="success">/pages/Inquiry/orders_inquiry.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="show_inquiry_list" class="ShowInquiryListAction" method="showAllInquiryList">
+			<result name="success">/pages/Inquiry/inquiryList.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="showSearchedInquiries" class="ShowInquiryListAction" method="showSearchedInquiryList">
+			<result name="success">/pages/Inquiry/inquiryList.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="specific_inquiry" class="InquiryAction" method="getInquiryByID">
+			<result name="success">/pages/Inquiry/specific_inquiry.jsp</result>
+			<result name="failed">/index.jsp</result>
+		</action>
+		<action name="checkFuliao" class="InquiryAction" method="checkFuliao">
+			<result name="success">/success.jsp </result>
+			<result name="failed">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+	</package>
+	<package name="Ajax" namespace="/Warehouse" extends="json-default">
+	    <action name="materialOutputAjax_*" class="MaterialOutAction" method="{1}">
+	        <result type="json">
+	            <param name="root">outputDateDetialAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	    <action name="warehousePublicAjax_*" class="WarehousePublicAction" method="{1}">
+	        <result type="json">
+	            <param name="root">storeDetailAjax</param>
+	            
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	    
+	    <action name="materialInDetail" class="MaterialInAction" method="materialInDetail">
+	        <result type="json">
+	            <param name="root">inputDateDetailAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	    <action name="materialDetail" class="MaterialInAction" method="materialDetail">
+	        <result type="json">
+	            <param name="root">materialDetailAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	        
+	    </action>
+	    <action name="locationAjax" class="MaterialInAction" method="locationAjax">
+	        <result type="json">
+	            <param name="root">locationDetailAjax</param>
+	        </result>
+	        <result name="failed">/index.jsp</result>
+	    </action>
+	</package>
+</struts>
+
