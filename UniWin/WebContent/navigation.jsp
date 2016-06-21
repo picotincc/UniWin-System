@@ -348,7 +348,7 @@
                     <li class="treeview" id="11100">
                         <a href="#">
                             <i class="fa fa-th"></i>
-                            <span>NEW询价单管理</span>
+                            <span>询价单管理</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
@@ -371,7 +371,7 @@
                     <li class="treeview" id="11200">
                         <a href="#">
                             <i class="fa fa-th"></i>
-                            <span>NEW客户订单管理</span>
+                            <span>客户订单管理</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
